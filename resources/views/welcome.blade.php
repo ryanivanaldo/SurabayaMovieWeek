@@ -88,8 +88,7 @@
                     <a href="https://laravel.com/docs">BERANDA</a>
                     <a href="https://laracasts.com">PROFIL</a>
                     <a href="https://laravel-news.com">KONTAK</a>
-                    <a href="https://blog.laravel.com">Program</a>
-                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://blog.laravel.com">PROGRAM</a>
                     <a href="https://forge.laravel.com">DEWAN JURI</a>
                 </div>
             </div>
