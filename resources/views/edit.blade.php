@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="{{ url('/') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/user')}}" class="nav-link">Lihat Profil</a>
+        <a href="{{url('/user')}}" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -173,11 +173,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Edit Profil</h5>
 
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
+                <form action="/pegawai/update" method="post">
+		{{ csrf_field() }}
+		
+		Nama: <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}"> <br/>
+		E-mail: <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}"> <br/>
+		
+		<input type="submit" value="Simpan Data">
+	</form>
                 </p>
 
                 <a href="#" class="card-link">Card link</a>
