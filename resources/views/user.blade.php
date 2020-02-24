@@ -19,6 +19,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
+<div class="modal fade" id="modalbarang">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit Profil</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+			 <table class="table table-hover" id="mytable">
+       <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Edit Profil</h5>
+
+                <p class="card-text">
+                <form action="/pegawai/update" method="post">
+		            {{ csrf_field() }}
+		
+		            Nama: <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}"> <br/>
+		            E-mail: <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}"> <br/>
+		
+	            	<input type="submit" value="Simpan Data">
+	            </form>
+                </p>
+              </div>
+            </div>
+		  </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -89,21 +122,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Upload Film
+                Registrasi
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{url('/user')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Link Trailer Youtube</p>
+                  <p>Profil Peserta</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Full Film</p>
+                  <p>Registrasi dan Upload</p>
                 </a>
               </li>
             </ul>
@@ -178,8 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Nama : {{ Auth::user()->name }} </br>
                   E-mail : {{ Auth::user()->email }}
                 </p>
-                <a href="{{url('/edit')}}" class="card-link">Edit Profil</a>
-                <a href="#" class="card-link">Another link</a>
+                <button type="button" class="form-control" id="tambah" name="tambah" data-toggle="modal" data-target="#modalbarang">Edit Profil</button>
               </div>
             </div>
             

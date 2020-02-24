@@ -177,13 +177,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <p class="card-text">
                 <form action="/pegawai/update" method="post">
-		{{ csrf_field() }}
+		            {{ csrf_field() }}
 		
-		Nama: <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}"> <br/>
-		E-mail: <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}"> <br/>
+		            Nama: <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}"> <br/>
+		            E-mail: <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}"> <br/>
 		
-		<input type="submit" value="Simpan Data">
-	</form>
+	            	<input type="submit" value="Simpan Data">
+	            </form>
                 </p>
 
                 <a href="#" class="card-link">Card link</a>
