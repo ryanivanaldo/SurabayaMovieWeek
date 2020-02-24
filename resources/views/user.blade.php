@@ -89,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Upload Film
+                Registrasi
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -97,13 +97,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Link Trailer Youtube</p>
+                  <p>Profil Peserta</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/user')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Full Film</p>
+                  <p>Registrasi dan Upload</p>
                 </a>
               </li>
             </ul>
