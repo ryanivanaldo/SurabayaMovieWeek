@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 Route::get('/user', 'UserController@index');
 Route::get('edit/','EditController@edit');
+// Route untuk menampilkan form upload
+Route::get('/upload', 'UploadController@upload');
+Route::post('/upload/proses', 'UploadController@proses_upload');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
