@@ -32,14 +32,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
        <div class="card">
               <div class="card-body">
                 <p class="card-text">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
 		            {{ csrf_field() }}		
 		            Nama Kelompok : <input type="text" required="required" name="nama_kelompok"> <br/>
                 Email Peserta : <input type="email" required="required" name="email"> <br/>
-		            Nama Institusi Sekolah : <input type="text" required="required" name="sekolah"> <br/>
-                Nama Lengkap Sutradara : <input type="text" required="required" name="sutradara"> <br/>
-                Nama Penulis Skenario/Naskah : <input type="text" required="required" name="skenario"> <br/>
-                Link Trailer Youtube : <input type="text" required="required" name="trailer"> <br/>
+		            Nama Institusi Sekolah : <input type="text" required="required" name="nama_sekolah"> <br/>
+                Nama Lengkap Sutradara : <input type="text" required="required" name="nama_sutradara"> <br/>
+                Nama Penulis Skenario/Naskah : <input type="text" required="required" name="nama_penulis"> <br/>
+                Link Trailer Youtube : <input type="text" required="required" name="link"> <br/>
                 Poster : <input type="file" name="poster" required="required"></br>
                 Film: <input type="file" name="film" required="required"></br>
                 Sinopsis Film : <textarea required="required" name="sinopsis"></textarea> <br/>
