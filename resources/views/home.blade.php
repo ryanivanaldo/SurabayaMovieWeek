@@ -32,6 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
        <div class="card">
               <div class="card-body">
                 <p class="card-text">
+                @if(count($errors) > 0)
+				<div class="alert alert-danger">
+					@foreach ($errors->all() as $error)
+					{{ $error }} <br/>
+					@endforeach
+				</div>
+				@endif
                 <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
 		            {{ csrf_field() }}
                 <div class ="form-group" input type ="text" class="form-control">		

@@ -17,9 +17,10 @@ Route::get('/', function () {
 Route::get('/user', 'UserController@index');
 Route::get('/juri','JuriController@juri');
 Route::get('/admin','AdminController@admin');
+Route::get('/admin/hapus/{id_profile}','AdminController@hapus');
+Route::get('/admin/setuju/{id_profile}','AdminController@setuju');
 // Route untuk menampilkan form upload
 Route::post('/upload', 'UploadController@upload');
-Route::post('/upload/proses', 'UploadController@proses_upload');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

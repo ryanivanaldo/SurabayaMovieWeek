@@ -207,14 +207,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <h2>Daftar Film</h2>
   </div>
   <div class="card-body">
-  <table class="table table-striped table-bordered">
-<thead class="thead-dark">
-<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sekolah</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Status</center></th></tr>
+  <table id="example2" class="table table-bordered table-hover">
+<thead>
+<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sekolah</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Aksi</center></th></tr>
 </thead>
 <tbody>
 </tbody>
 @foreach($profile as $p)
+		{{ csrf_field() }}
 		<tr>
+        <input type="hidden" name="id_profil" value="{{ $p->id_profil }}"> <br/>
 			<td>{{ $p->nama_kelompok }}</td>
 			<td>{{ $p->nama_sekolah }}</td>
 			<td>{{ $p->nama_sutradara }}</td>
@@ -222,8 +224,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<td>{{ $p->link }}</td>
 			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
 			<td>{{ $p->film }}</td>
-			<td>{{ $p->status }}</td>
-		</tr>
+            <td>
+            @if($p->status=='0')
+            <a href="{{url('/admin/setuju/'.$p->id_profil)}}">setuju|<a href="{{url('/admin/hapus/'.$p->id_profil) }}">Hapus</a></td>
+            @else
+            Sudah Diferifikasi
+            @endif
+        </tr>
 		@endforeach
 </table>
 </div>
