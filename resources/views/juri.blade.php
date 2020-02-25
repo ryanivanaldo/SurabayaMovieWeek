@@ -12,9 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Surabaya Movie Week</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -49,17 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </form>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      
-      <!-- Notifications Dropdown Menu -->
-      
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
-      </li>
-    </ul>
+    
   </nav>
   <!-- /.navbar -->
 
@@ -182,15 +172,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </tbody>
 @foreach($profile as $p)
 		<tr>
+    @if($p->status=='1')
+    <input type="hidden" name="id_profil" value="{{ $p->id_profil }}">
 			<td>{{ $p->nama_kelompok }}</td>
 			<td>{{ $p->nama_sutradara }}</td>
 			<td>{{ $p->nama_penulis }}</td>
-			<td>{{ $p->link }}</td>
+			<td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
 			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
 			<td> <video id="my-video" class="video-js" controls preload="auto" 
       width="200" height="100" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
     </video></td>
-			<td>{{ $p->sinopsis }}</td>
+			<td><a href="{{url('/detail/'.$p->id_profil)}}">Detail</a></td>
+      @endif
 		</tr>
 		@endforeach
 </table>

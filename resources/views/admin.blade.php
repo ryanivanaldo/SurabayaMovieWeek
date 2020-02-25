@@ -192,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/home') }}">Kembali</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -223,11 +223,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<td>{{ $p->nama_sekolah }}</td>
 			<td>{{ $p->nama_sutradara }}</td>
 			<td>{{ $p->nama_penulis }}</td>
-			<td>{{ $p->link }}</td>
+			<td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
 			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
-			<td>{{ $p->film }}</td>
+			<td><video id="my-video" class="video-js" controls preload="auto" 
+      width="200" height="100" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
+    </video></td>
             <td>
-            @if($p->status=='0')
+            @if($p->status==0)
             <a href="{{url('/admin/setuju/'.$p->id_profil)}}">setuju|<a href="{{url('/admin/hapus/'.$p->id_profil) }}">Hapus</a></td>
             @else
             Sudah Diferifikasi

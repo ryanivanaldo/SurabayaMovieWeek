@@ -19,6 +19,7 @@ Route::get('/juri','JuriController@juri');
 Route::get('/admin','AdminController@admin');
 Route::get('/admin/hapus/{id_profile}','AdminController@hapus');
 Route::get('/admin/setuju/{id_profile}','AdminController@setuju');
+Route::get('/detail/{id_profile}','DetailController@detail');
 // Route untuk menampilkan form upload
 Route::post('/upload', 'UploadController@upload');
 Auth::routes();
