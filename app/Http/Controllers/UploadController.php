@@ -17,7 +17,7 @@ class UploadController extends Controller
         'nama_penulis'=>'required',
         'link'=>'required',
         'poster' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-        'film'=>'required',//'required|file|video|mimes:mp4,avi,mov|max:300000',
+        'film'=>'mimes:mp4,mov|max:20000|required',//'required|file|video|mimes:mp4,avi,mov|max:300000',
         'sinopsis' => 'required|min:10'
     ]);
 
@@ -26,6 +26,7 @@ class UploadController extends Controller
     $video=$request->file('film');
     $nama_file = time()."_".$file->getClientOriginalName();
     $nama_file2 = time()."_".$video->getClientOriginalName();
+   // $nama_file2 = $video->store('film');
               // isi dengan nama folder tempat kemana file diupload
     $tujuan_upload = 'data_file';
     $tujuan_upload2 = 'data_video';
