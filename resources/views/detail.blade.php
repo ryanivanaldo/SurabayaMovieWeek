@@ -175,7 +175,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       width="900" height="400" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
     </video> 
         </div>
-  
   </div>
   </br>
   <h3>Sinopsis</h3>
