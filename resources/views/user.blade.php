@@ -35,11 +35,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p class="card-text">
                 <form action="/pegawai/update" method="post">
 		            {{ csrf_field() }}
-		
-		            Nama: <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}"> <br/>
-		            E-mail: <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}"> <br/>
+               <div class="form-group" input type = "text" class= "form-control">
+		           <label> Nama: </label> <input type="text" required="required" name="nama" value="{{ Auth::user()->name }}" class="form-control"> <br/>
+		           <label> E-mail: </label> <input type="text" required="required" name="jabatan" value="{{ Auth::user()->email }}" class="form-control"> <br/>
 		
 	            	<input type="submit" value="Simpan Data">
+               </div>
 	            </form>
                 </p>
               </div>
@@ -134,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+              <a  id="reg" name="registrasi" data-toggle="modal" data-target="#regis" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrasi dan Upload</p>
                 </a>
@@ -202,8 +203,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Profil</h5>
@@ -214,48 +213,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <button type="button" class="form-control" id="tambah" name="tambah" data-toggle="modal" data-target="#modalbarang">Edit Profil</button>
               </div>
             </div>
-            
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
           </div>
           <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

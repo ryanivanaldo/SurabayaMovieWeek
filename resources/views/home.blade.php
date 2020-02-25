@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p class="card-text">
                 <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
 		            {{ csrf_field() }}
-                <div class ="form-group" input type class="form-control">		
+                <div class ="form-group" input type ="text" class="form-control">		
 		           <label> Nama Kelompok : </label> <input type="text" required="required" name="nama_kelompok" class="form-control"> <br/>
                <label> Email Peserta : </label> <input type="email" required="required" name="email" class="form-control"> <br/>
 		           <label> Nama Institusi Sekolah : </label> <input type="text" required="required" name="nama_sekolah" class="form-control"> <br/>
