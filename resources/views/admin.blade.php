@@ -202,6 +202,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
+    
+    <div class="col-16">
     <div class="card">
   <div class="card-header">
   <h2>Daftar Film</h2>
@@ -240,7 +242,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content -->
+        <!-- /.content -->
+  </div>
   </div>
   <!-- /.content-wrapper -->
 

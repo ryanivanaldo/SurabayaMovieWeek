@@ -72,9 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+        
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
@@ -86,43 +84,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
+          @if(Auth::user()->status==0)
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Upload Film
+                Registrasi
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{url('/user')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Link Trailer Youtube</p>
+                  <p>Profil Peserta</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a  id="reg" name="registrasi" data-toggle="modal" data-target="#regis" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Full Film</p>
+                  <p>Registrasi dan Upload</p>
                 </a>
               </li>
             </ul>
           </li>
+          @endif
+          @if(Auth::user()->status==1)
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('/juri')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
+                Lihat Film
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
-          @if('status==1')
+          @endif
+          @if(Auth::user()->status==2)
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('/admin')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Lihat Film
+                Validasi
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -172,21 +174,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <h2>Daftar Film</h2>
   </div>
   <div class="card-body">
-  <table class="table table-striped table-bordered">
-<thead class="thead-dark">
-<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sekolah</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Sinopsis</center></th></tr>
+  <table id="example2" class="table table-bordered table-hover">
+<thead>
+<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Aksi</center></th></tr>
 </thead>
 <tbody>
 </tbody>
 @foreach($profile as $p)
 		<tr>
 			<td>{{ $p->nama_kelompok }}</td>
-			<td>{{ $p->nama_sekolah }}</td>
 			<td>{{ $p->nama_sutradara }}</td>
 			<td>{{ $p->nama_penulis }}</td>
 			<td>{{ $p->link }}</td>
 			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
-			<td>{{ $p->film }}</td>
+			<td> <video id="my-video" class="video-js" controls preload="auto" 
+      width="200" height="100" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
+    </video></td>
 			<td>{{ $p->sinopsis }}</td>
 		</tr>
 		@endforeach
