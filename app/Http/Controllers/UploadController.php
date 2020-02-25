@@ -17,7 +17,7 @@ class UploadController extends Controller
         'nama_penulis'=>'required',
         'link'=>'required',
         'poster' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-        'film'=>'mimes:mp4,mov|max:20000|required',//'required|file|video|mimes:mp4,avi,mov|max:300000',
+        'film'=>'mimes:mp4,mov,avi|max:20000|required',
         'sinopsis' => 'required|min:10'
     ]);
 
@@ -43,53 +43,6 @@ class UploadController extends Controller
         'film'=>$nama_file2,
         'sinopsis' => $request->sinopsis
     ]);
-/*   
-    $this->validate($request, [
-        'file' => 'required',
-        'sinopsis' => 'required',
-    ]);
-
-    // menyimpan data file yang diupload ke variabel $file
-    $file = $request->file('file');
-
-              // nama file
-    echo 'File Name: '.$file->getClientOriginalName();
-    echo '<br>';
-
-              // ekstensi file
-    echo 'File Extension: '.$file->getClientOriginalExtension();
-    echo '<br>';
-
-              // real path
-    echo 'File Real Path: '.$file->getRealPath();
-    echo '<br>';
-
-              // ukuran file
-    echo 'File Size: '.$file->getSize();
-    echo '<br>';
-
-              // tipe mime
-    echo 'File Mime Type: '.$file->getMimeType();
-
-              // isi dengan nama folder tempat kemana file diupload
-    $tujuan_upload = 'data_file';
-
-            // upload file
-    $file->move($tujuan_upload,$file->getClientOriginalName());
-
-	// insert data ke table pegawai
-	DB::table('profile')->insert([
-		'nama_kelompok' => $request->nama_kelompok,
-		'email' => $request->email,
-		'nama_sekolah' => $request->sekolah,
-        'nama_sutradara' => $request->sutradara,
-        'nama_penulis' => $request->skenario,
-        'link' => $request->trailer,
-        //'poster' => $request->file,
-        //'film' => $request->film,
-        'sinopsis' => $request->sinopsis
-	]);*/
-	// alihkan halaman ke halaman pegawai
-	return redirect('/');
+	return redirect()->back();
 }
 }

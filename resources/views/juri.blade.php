@@ -19,45 +19,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
-<body class="hold-transition sidebar-mini">
-<div class="modal fade" id="regis">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Registrasi dan Upload</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-			 <table class="table table-hover" id="mytable">
-       <div class="card">
-              <div class="card-body">
-                <p class="card-text">
-                <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
-		            {{ csrf_field() }}
-                <div class ="form-group" input type ="text" class="form-control">		
-		           <label> Nama Kelompok : </label> <input type="text" required="required" name="nama_kelompok" class="form-control"> <br/>
-               <label> Email Peserta : </label> <input type="email" required="required" name="email" class="form-control"> <br/>
-		           <label> Nama Institusi Sekolah : </label> <input type="text" required="required" name="nama_sekolah" class="form-control"> <br/>
-               <label> Nama Lengkap Sutradara : </label> <input type="text" required="required" name="nama_sutradara" class="form-control"> <br/>
-               <label> Nama Penulis Skenario/Naskah : </label> <input type="text" required="required" name="nama_penulis" class="form-control"> <br/>
-               <label> Link Trailer Youtube : </label> <input type="text" required="required" name="link" class="form-control"> <br/>
-               <label> Poster : </label> <input type="file" name="poster" required="required" class="form-control"></br>
-               <label> Film: </label><input type="file" name="film" required="required" class="form-control"></br>
-               <label> Sinopsis Film :</label> <textarea required="required" name="sinopsis" class="form-control"></textarea> <br/>
-	            	<input type="submit" value="Upload" class="form-control">
-                </div>
-	            </form>
-                </p>
-              </div>
-            </div>
-		  </table>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-			</div>
-		</div>
-	</div>
-</div>
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -69,6 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/') }}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{url('/user')}}" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -85,7 +49,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </form>
 
     <!-- Right navbar links -->
-    
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      
+      <!-- Notifications Dropdown Menu -->
+      
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+            class="fas fa-th-large"></i></a>
+      </li>
+    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -98,7 +72,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-       
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
@@ -110,47 +86,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-          @if(Auth::user()->status==0)
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Registrasi
+                Upload Film
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/user')}}" class="nav-link active">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Profil Peserta</p>
+                  <p>Link Trailer Youtube</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a  id="reg" name="registrasi" data-toggle="modal" data-target="#regis" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registrasi dan Upload</p>
+                  <p>Upload Full Film</p>
                 </a>
               </li>
             </ul>
           </li>
-          @endif
-          @if(Auth::user()->status==1)
           <li class="nav-item">
-            <a href="{{url('/juri')}}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Lihat Film
+                Simple Link
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
-          @endif
-          @if(Auth::user()->status==2)
+          @if('status==1')
           <li class="nav-item">
-            <a href="{{url('/admin')}}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Validasi
+                Lihat Film
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -181,12 +153,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Starter Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Starter Page</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -195,35 +167,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Ketentuan</h5>
+        <div class="card">
+  <div class="card-header">
+  <h2>Daftar Film</h2>
+  </div>
+  <div class="card-body">
+  <table class="table table-striped table-bordered">
+<thead class="thead-dark">
+<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sekolah</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Sinopsis</center></th></tr>
+</thead>
+<tbody>
+</tbody>
+@foreach($profile as $p)
+		<tr>
+			<td>{{ $p->nama_kelompok }}</td>
+			<td>{{ $p->nama_sekolah }}</td>
+			<td>{{ $p->nama_sutradara }}</td>
+			<td>{{ $p->nama_penulis }}</td>
+			<td>{{ $p->link }}</td>
+			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
+			<td>{{ $p->film }}</td>
+			<td>{{ $p->sinopsis }}</td>
+		</tr>
+		@endforeach
+</table>
+</div>
+  </div>
 
-                <p class="card-text">
-                  Trailer video max termasuk title dan credit: 4 menit</br>
-                  Full video max : 15 menit
-                </p>
-
-              </div>
-            </div>
-
-            
+          <!-- /.card -->
           </div>
           <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Format Upload Film</h5>
-              </div>
-              <div class="card-body">
-                <p class="card-text">1. Sinopsis Film</br>2. Poster Film</br>3. Format video : .avi, .mp4, .mov</p>
-                
-              </div>
+          
+                </div>
             </div>
+          </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->

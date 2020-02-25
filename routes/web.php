@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/user', 'UserController@index');
-Route::get('edit/','EditController@edit');
+Route::get('/juri','JuriController@juri');
+Route::get('/admin','AdminController@admin');
 // Route untuk menampilkan form upload
 Route::post('/upload', 'UploadController@upload');
 Route::post('/upload/proses', 'UploadController@proses_upload');
