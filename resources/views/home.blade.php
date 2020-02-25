@@ -33,17 +33,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body">
                 <p class="card-text">
                 <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
-		            {{ csrf_field() }}		
-		            Nama Kelompok : <input type="text" required="required" name="nama_kelompok"> <br/>
-                Email Peserta : <input type="email" required="required" name="email"> <br/>
-		            Nama Institusi Sekolah : <input type="text" required="required" name="nama_sekolah"> <br/>
-                Nama Lengkap Sutradara : <input type="text" required="required" name="nama_sutradara"> <br/>
-                Nama Penulis Skenario/Naskah : <input type="text" required="required" name="nama_penulis"> <br/>
-                Link Trailer Youtube : <input type="text" required="required" name="link"> <br/>
-                Poster : <input type="file" name="poster" required="required"></br>
-                Film: <input type="file" name="film" required="required"></br>
-                Sinopsis Film : <textarea required="required" name="sinopsis"></textarea> <br/>
-	            	<input type="submit" value="Upload">
+		            {{ csrf_field() }}
+                <div class ="form-group" input type class="form-control">		
+		           <label> Nama Kelompok : </label> <input type="text" required="required" name="nama_kelompok" class="form-control"> <br/>
+               <label> Email Peserta : </label> <input type="email" required="required" name="email" class="form-control"> <br/>
+		           <label> Nama Institusi Sekolah : </label> <input type="text" required="required" name="nama_sekolah" class="form-control"> <br/>
+               <label> Nama Lengkap Sutradara : </label> <input type="text" required="required" name="nama_sutradara" class="form-control"> <br/>
+               <label> Nama Penulis Skenario/Naskah : </label> <input type="text" required="required" name="nama_penulis" class="form-control"> <br/>
+               <label> Link Trailer Youtube : </label> <input type="text" required="required" name="link" class="form-control"> <br/>
+               <label> Poster : </label> <input type="file" name="poster" required="required" class="form-control"></br>
+               <label> Film: </label><input type="file" name="film" required="required" class="form-control"></br>
+               <label> Sinopsis Film :</label> <textarea required="required" name="sinopsis" class="form-control"></textarea> <br/>
+	            	<input type="submit" value="Upload" class="form-control">
+                </div>
 	            </form>
                 </p>
               </div>
