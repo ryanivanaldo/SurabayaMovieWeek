@@ -30,23 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/user')}}" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
 
   
   </nav>
@@ -164,9 +150,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <h2>{{ $p->film }}</h2>
   </div>
   <div class="card-body">
-  <div class="col-md-3">
-  <h3>Poster</h3>
+  <div class="row">
+    <div class="col-md-4">
+    <h3>Poster</h3>
   <img width="220px" src="{{ url('/data_file/'.$p->poster) }}">
+    </div>
+    <div class="col-md-4">
+<table id="vertical-1" class="table table-bordered table-hover">
+<tbody>
+<tr>
+<th>Nama Kelompok</th><td>{{ $p->nama_kelompok }}</td></tr>
+<th>E-mail</th><td>{{ $p->email }}</td></tr>
+<th>Nama Sekolah</th><td>{{ $p->nama_sekolah }}</td></tr>
+<th>Nama Sutradara</th><td>{{ $p->nama_sutradara }}</td></tr>
+<th>Nama Penulis</th><td>{{ $p->nama_penulis }}</td></tr>
+<th>Link Trailer</th><td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td></tr>
+</tbody>		
+</table>
+    </div>
   </div>
   </br>
   <h3>Film</h3>
