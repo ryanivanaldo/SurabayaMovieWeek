@@ -152,8 +152,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
   <div class="card-body">
   <table id="example2" class="table table-bordered table-hover">
+  <a  href="{{url('/full')}}"  class="btn btn-warning">Data yang sudah dinilai</a>
 <thead>
-<tr><th><center>Nama Kelompok</center></th><th><center>Nama Sutradara</center></th><th><center>Nama Penulis</center></th><th><center>Link Trailer</center></th><th><center>Poster</center></th><th><center>Film</center></th><th><center>Aksi</center></th></tr>
+<tr><th><center>Poster dan Trailer</center></th><th><center>Aksi</center></th></tr>
 </thead>
 <tbody>
 </tbody>
@@ -161,15 +162,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<tr>
     @if($p->status=='1')
     <input type="hidden" name="id_profil" value="{{ $p->id_profil }}">
-			<td>{{ $p->nama_kelompok }}</td>
-			<td>{{ $p->nama_sutradara }}</td>
-			<td>{{ $p->nama_penulis }}</td>
-			<td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td>
-			<td><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></td>
-			<td> <video id="my-video" class="video-js" controls preload="auto" 
-      width="200" height="100" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
-    </video></td>
-			<td><a href="{{url('/detail/'.$p->id_profil)}}">Detail</a></td>
+			<td><a href="{{ $p->link }}" target="_blank"><img width="150px" src="{{ url('/data_file/'.$p->poster) }}"></a></td>			
+			<td><a href="{{url('/detail/'.$p->id_profil)}}">Detail dan Penilaian</a></td>
       @endif
 		</tr>
 		@endforeach

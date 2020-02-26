@@ -19,51 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="modal fade" id="nilai">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Penilaian</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-			 <table class="table table-hover" id="mytable">
-       <div class="card">
-              <div class="card-body">
-                <p class="card-text">
-                @if(count($errors) > 0)
-				<div class="alert alert-danger">
-					@foreach ($errors->all() as $error)
-					{{ $error }} <br/>
-					@endforeach
-				</div>
-				@endif
-                <form action="{{url('/nilai')}}" method="post">
-		            {{ csrf_field() }}
-                <div class ="form-group" input type ="text" class="form-control">
-                @foreach($profile as $p)
-                <input type="hidden" name="id_profil" value="{{ $p->id_profil }}">  @endforeach
-                <input type="hidden" name="id_juri" value="{{ Auth::user()->id }}">
-              
-		           <label> Kriteria 1 : </label> <input type="number" required="required" name="k1" class="form-control"> <br/>
-               <label> Kriteria 2 :  </label> <input type="number" required="required" name="k2" class="form-control"> <br/>
-		           <label> Kriteria 3 :  </label> <input type="number" required="required" name="k3" class="form-control"> <br/>
-               <label> Kriteria 4 :  </label> <input type="number" required="required" name="k4" class="form-control"> <br/>
-	            	<input type="submit" value="Upload Nilai" class="form-control">
-                </div>
-	            </form>
-                </p>
-              </div>
-            </div>
-		  </table>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-			</div>
-		</div>
-	</div>
-</div>
 <div class="wrapper">
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -73,11 +30,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/') }}" class="nav-link">Home</a>
+      </li>
+      
     </ul>
 
-    <!-- SEARCH FORM -->
 
-  
+    <!-- Right navbar links -->
+    
   </nav>
   <!-- /.navbar -->
 
@@ -173,12 +132,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Detail film</h1>
+            <h1 class="m-0 text-dark">Film Peserta</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url('/juri')}}">Kembali</a></li>
-              <li class="breadcrumb-item active">Detail film</li>
+              <li class="breadcrumb-item active">Film Peserta</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -189,46 +148,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
         <div class="card">
   <div class="card-header">
-  @foreach($profile as $p)
-  <h2>{{ $p->film }}</h2>
+  <h2>Daftar Film</h2>
   </div>
   <div class="card-body">
-  <div class="row">
-    <div class="col-md-4">
-    <h3>Poster</h3>
-  <img width="220px" src="{{ url('/data_file/'.$p->poster) }}">
-  
-    </div>
-    <div class="col-md-4">
-<table id="vertical-1" class="table table-bordered table-hover">
+  <table id="example2" class="table table-bordered table-hover">
+<thead>
+<tr><th><center>id peserta</center></th><th><center>Kriteria 1</center></th><th><center>Kriteria 2</center></th>
+<th><center>Kriteria 3</center></th><th><center>Kriteria 4</center></th><th><center>Total</center></th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<th>Nama Kelompok</th><td>{{ $p->nama_kelompok }}</td></tr>
-<th>E-mail</th><td>{{ $p->email }}</td></tr>
-<th>Nama Sekolah</th><td>{{ $p->nama_sekolah }}</td></tr>
-<th>Nama Sutradara</th><td>{{ $p->nama_sutradara }}</td></tr>
-<th>Nama Penulis</th><td>{{ $p->nama_penulis }}</td></tr>
-<th>Link Trailer</th><td><a href="{{ $p->link }}" target="_blank">{{ $p->link }}</a></td></tr>
-</tbody>		
+</tbody>
+@foreach($nilai as $n)
+		<tr>
+        @foreach($n->profil as $p)
+    <td>"{{ $p->id_profil }}</td>
+    @endforeach
+			<td>{{ $n->kriteria1 }}</td>			
+			<td>{{ $n->kriteria2 }}</td>
+            <td>{{ $n->kriteria3 }}</td>
+            <td>{{ $n->kriteria3 }}</td>
+            <td>{{ $n->nilai_hasil }}</td>
+		</tr>
+		@endforeach
 </table>
-    
-  </div>
-  </div>
-    <div class="col-md-4">
-    <a  id="reg" name="registrasi" data-toggle="modal" data-target="#nilai"  class="btn btn-warning">Penilaian</a>
-    </div>
-  </br>
-  <h3>Film</h3>
-  <div class="col-md-1">
-  <video id="my-video" class="video-js" controls preload="auto" 
-      width="900" height="400" data-setup="{}"  src="{{url('/data_video/'.$p->film)}}" type="video/mp4">
-    </video> 
-        </div>
-  </div>
-  </br>
-  <h3>Sinopsis</h3>
-  <p>{{ $p->sinopsis }}</p>
-  @endforeach
+</div>
   </div>
 
           <!-- /.card -->
@@ -259,10 +203,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>
