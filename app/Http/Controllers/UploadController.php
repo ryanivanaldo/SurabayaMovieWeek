@@ -9,6 +9,12 @@ class UploadController extends Controller
 {
     public function upload(Request $request)
 {
+    $messages = [
+        'required' => ':attribute wajib diisi',
+        'min' => 'minimal 10 kata',
+        'max' => 'maximal 2000000mb',
+        'mimes'=> 'pastikan format sudah benar'
+    ];
     $this->validate($request, [
         'nama_kelompok'=> 'required',
         'email'=> 'required|email',
@@ -17,9 +23,9 @@ class UploadController extends Controller
         'nama_penulis'=>'required',
         'link'=>'required',
         'poster' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-        'film'=>'mimes:mp4,mov,avi|max:20000|required',
+        'film'=>'mimes:mp4,mov,avi|max:2000000|required',
         'sinopsis' => 'required|min:10'
-    ]);
+    ],$messages);
 
     // menyimpan data file yang diupload ke variabel $file
     $file = $request->file('poster');

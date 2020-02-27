@@ -153,7 +153,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="card-body">
   <table id="example2" class="table table-bordered table-hover">
 <thead>
-<tr><th><center>id peserta</center></th><th><center>Kriteria 1</center></th><th><center>Kriteria 2</center></th>
+<tr><th><center>ID Peserta</center></th><th><center>ID Juri</center></th><th><center>Kriteria 1</center></th><th><center>Kriteria 2</center></th>
 <th><center>Kriteria 3</center></th><th><center>Kriteria 4</center></th><th><center>Total</center></th>
 </tr>
 </thead>
@@ -161,9 +161,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </tbody>
 @foreach($nilai as $n)
 		<tr>
-        @foreach($n->profil as $p)
-    <td>"{{ $p->id_profil }}</td>
-    @endforeach
+    <td>{{ $n->id_profil }}</td>
+    <td>{{ $n->id_juri }}</td>
 			<td>{{ $n->kriteria1 }}</td>			
 			<td>{{ $n->kriteria2 }}</td>
             <td>{{ $n->kriteria3 }}</td>
