@@ -12,7 +12,7 @@ class UploadController extends Controller
     $messages = [
         'required' => ':attribute wajib diisi',
         'min' => 'minimal 10 kata',
-        'max' => 'maximal 2000000mb',
+        'max' => 'maximal 200mb',
         'mimes'=> 'pastikan format sudah benar'
     ];
     $this->validate($request, [
@@ -23,7 +23,7 @@ class UploadController extends Controller
         'nama_penulis'=>'required',
         'link'=>'required',
         'poster' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-        'film'=>'mimes:mp4,mov,avi|max:2000000|required',
+        'film'=>'mimes:mp4,mov,avi|max:20000|required',
         'sinopsis' => 'required|min:10'
     ],$messages);
 

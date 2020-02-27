@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition sidebar-mini">
 <body class="hold-transition sidebar-mini">
+
 <div class="modal fade" id="regis">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
@@ -32,13 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
        <div class="card">
               <div class="card-body">
                 <p class="card-text">
-                @if(count($errors) > 0)
-				<div class="alert alert-danger">
-					@foreach ($errors->all() as $error)
-					{{ $error }} <br/>
-					@endforeach
-				</div>
-				@endif
+                
                 <form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
 		            {{ csrf_field() }}
                 <div class ="form-group" input type ="text" class="form-control">		
@@ -51,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                <label> Poster : </label> <input type="file" name="poster" required="required" class="form-control"></br>
                <label> Film: </label><input type="file" name="film" required="required" class="form-control"></br>
                <label> Sinopsis Film :</label> <textarea required="required" name="sinopsis" class="form-control"></textarea> <br/>
-	            	<input type="submit" value="Upload" class="form-control">
+	            	<input type="submit" value="Upload" class="form-control" onclick="myFunction()">
                 </div>
 	            </form>
                 </p>
@@ -194,6 +189,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
         <div class="row">
+        @if(count($errors) > 0)
+				<div class="alert alert-danger">
+					@foreach ($errors->all() as $error)
+					{{ $error }} <br/>
+					@endforeach
+				</div>
+				@endif
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">

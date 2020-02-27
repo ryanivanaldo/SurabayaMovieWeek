@@ -160,7 +160,7 @@
 
                     <div class="col-md-6 col-sm-12">
                          <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
-                              <img src="images/about-image.jpg" class="img-responsive" alt="">
+                              <img src="images/about-images.jpg" class="img-responsive" alt="">
                          </div>
                     </div>
                     
